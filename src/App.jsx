@@ -6,6 +6,7 @@ import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
 import { loader as weatherLoader } from "./pages/Root";
 import Spinner from "./components/Spinner";
+import Map from "./map/Map";
 
 const DailyWeatherDetailPage = lazy(() => import("./pages/DailyWeatherDetail"));
 const SearchedCityDetailPage = lazy(() => import("./pages/SearchedCityDetail"));
@@ -24,9 +25,13 @@ const router = createBrowserRouter([
           <Suspense fallback={<Spinner />}>
             <DailyWeatherDetailPage />
           </Suspense>
-        ),
-      },
-    ],
+        )
+      }
+    ]
+  },
+  {
+    path: "/map",
+    element: <Map />
   },
   {
     path: "search/:searchedCityDetail",
@@ -47,10 +52,10 @@ const router = createBrowserRouter([
           <Suspense fallback={<Spinner />}>
             <DailyWeatherDetailPage />
           </Suspense>
-        ),
-      },
-    ],
-  },
+        )
+      }
+    ]
+  }
 ]);
 
 function App() {

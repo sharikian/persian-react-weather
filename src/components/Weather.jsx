@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Col, Row } from "react-bootstrap";
-// import { Card } from "react-bootstrap";
-// import { Area, AreaChart, ResponsiveContainer, XAxis, Tooltip } from "recharts";
+import { Card } from "react-bootstrap";
+import { Area, AreaChart, ResponsiveContainer, XAxis, Tooltip } from "recharts";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,33 +11,34 @@ import {
   faWind
 } from "@fortawesome/free-solid-svg-icons";
 import getWeatherData from "../utils/getWeatherData";
+import { useEffect } from "react";
 
-// const CustomTooltip = ({ active, payload, unit }) => {
-//   if (active && payload && payload.length) {
-//     const { code, hour, temperature } = payload.at(0).payload;
+const CustomTooltip = ({ active, payload, unit }) => {
+  if (active && payload && payload.length) {
+    const { code, hour, temperature } = payload.at(0).payload;
 
-//     return (
-//       <Card className="shadow">
-//         <Card.Header className="pb-0">
-//           <Card.Title className="fs-6">{hour}</Card.Title>
-//         </Card.Header>
-//         <Card.Body className="d-flex align-items-center pt-0">
-//           <img
-//             src={getWeatherData(code).icon.day}
-//             width={24}
-//             alt="Tooltip Icon"
-//           />
-//           <span className="ms-1">
-//             {getWeatherData(code).forecast_short}, {Math.round(temperature)}
-//             <sup>{unit}</sup>
-//           </span>
-//         </Card.Body>
-//       </Card>
-//     );
-//   }
+    return (
+      <Card className="shadow">
+        <Card.Header className="pb-0">
+          <Card.Title className="fs-6">{hour}</Card.Title>
+        </Card.Header>
+        <Card.Body className="d-flex align-items-center pt-0">
+          <img
+            src={getWeatherData(code).icon.day}
+            width={24}
+            alt="Tooltip Icon"
+          />
+          <span className="ms-1">
+            {getWeatherData(code).forecast_short}, {Math.round(temperature)}
+            <sup>{unit}</sup>
+          </span>
+        </Card.Body>
+      </Card>
+    );
+  }
 
-//   return null;
-// };
+  return null;
+};
 
 const Weather = ({ weather, units, date, hourlyWeathers }) => {
   const animationState = useSelector((state) => state.animation);
@@ -47,16 +48,19 @@ const Weather = ({ weather, units, date, hourlyWeathers }) => {
   const { temperature_unit, windspeed_unit } = units;
 
   const { icon, forecast } = getWeatherData(weathercode);
+  useEffect(() => {
+    document.querySelector("#root").style.opacity = 1;
+  });
 
-  // const { codes, hours, temperatures } = hourlyWeathers;
+  const { codes, hours, temperatures } = hourlyWeathers;
 
-  // const data = hours.map((hour, index) => {
-  //   return {
-  //     code: codes[index],
-  //     hour: hour.split("T").at(1),
-  //     temperature: temperatures[index]
-  //   };
-  // });
+  const data = hours.map((hour, index) => {
+    return {
+      code: codes[index],
+      hour: hour.split("T").at(1),
+      temperature: temperatures[index]
+    };
+  });
 
   return (
     <>
@@ -114,7 +118,7 @@ const Weather = ({ weather, units, date, hourlyWeathers }) => {
           )}
         </Col>
       </Row>
-      {/* <Row className="justify-content-center my-3" style={{ height: "200px" }}>
+      <Row className="justify-content-center my-3" style={{ height: "200px" }}>
         <Col md="10" className="text-center">
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart width="100%" height={200} data={data}>
@@ -148,7 +152,7 @@ const Weather = ({ weather, units, date, hourlyWeathers }) => {
             </AreaChart>
           </ResponsiveContainer>
         </Col>
-      </Row> */}
+      </Row>
     </>
   );
 };

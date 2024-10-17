@@ -8,10 +8,8 @@ const HomePage = () => {
   const { hourlyWeatherCodes, hourlyTimes, hourlyTemperatures } = hourly;
 
   const [date, currentHour] = [
-    "Today ".concat(
-      getDate(new Date(), { hour: "numeric", minute: "numeric" })
-    ),
-    Number(getDate(new Date(), { hour: "numeric", hourCycle: "h23" })) //Number(new Date().getHours())
+    "Today ".concat(getDate(new Date(), { hour: "numeric", minute: "numeric" })),
+    Number(new Date().getHours())//Number(getDate(new Date(), { hour: "numeric", hourCycle: "h23" }))
   ];
 
   const index = hourlyTimes.findIndex(

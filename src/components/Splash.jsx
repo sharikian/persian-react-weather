@@ -17,6 +17,14 @@ const Splash = () => {
     return () => clearTimeout(identifier);
   }, [toast]);
 
+  useEffect(() => {
+    if (toast) {
+      document.querySelector("#root").style.opacity = 0.3;
+    } else {
+      document.querySelector("#root").style.opacity = 1;
+    }
+  }, [toast]);
+
   return (
     <>
       <div id="spinner">
@@ -33,6 +41,7 @@ const Splash = () => {
           transition={{ repeat: Infinity, ease: "easeInOut", duration: 1.25 }}
         >
           <span>در حال پیدا کردن مکان شما ...</span>
+          
           {/* <FontAwesomeIcon icon={faSearch} className="ms-2" /> */}
         </motion.p>
       </div>

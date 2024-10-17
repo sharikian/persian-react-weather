@@ -3,6 +3,7 @@ import { ListGroup, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CircleFlag } from "react-circle-flags";
+import { getCurrentCity } from "../utils/getCities";
 
 const SearchedCityPage = ({ city }) => {
   const [searchedCity, setSearchedCity] = useState(null);
@@ -15,7 +16,7 @@ const SearchedCityPage = ({ city }) => {
     setError(false);
     try {
       const response = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${city.toLowerCase()}`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${getCurrentCity(city.toLowerCase())}`
       );
 
       if (!response.ok) throw new Error("اطلاعات پیدا نشد !");
@@ -29,6 +30,7 @@ const SearchedCityPage = ({ city }) => {
       }
 
       setSearchedCity(data);
+      console.log(searchedCity)
       setIsLoading(false);
       setError(false);
     } catch (eror) {
@@ -60,7 +62,7 @@ const SearchedCityPage = ({ city }) => {
         !error &&
         searchedCity &&
         searchedCity.results !== undefined &&
-        searchedCity.results.map((result, index) => (
+        [searchedCity.results[0]].map((result, index) => (
           <Link
             to={`/search/country=${result.country_code}&cityname=${result.name}&latitude=${result.latitude}&longitude=${result.longitude}`}
             className="mb-2"

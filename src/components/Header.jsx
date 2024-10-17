@@ -21,6 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useInput from "../hooks/use-input";
 import SearchedCityPage from "../pages/SearchedCity";
+import Map from "../map/Map";
 
 const Header = ({ searched }) => {
   const [modal, setModal] = useState(false);
@@ -126,6 +127,71 @@ const Header = ({ searched }) => {
                 size="xl"
                 style={{ cursor: "pointer", marginRight: "10rem" }}
                 onClick={handleModal}
+              />
+            </div>
+            <FloatingLabel label="جست و جوی شهر">
+              <Form.Control
+                type="text"
+                name="city"
+                placeholder="مشهد, ایتالیا و..."
+                value={city}
+                onChange={handleCityOnChange}
+                autoComplete="off"
+              />
+            </FloatingLabel>
+          </Modal.Header>
+          <Modal.Body style={city === "" ? undefined : { height: "300px" }}>
+            <ListGroup>
+              <SearchedCityPage city={city} />
+            </ListGroup>
+          </Modal.Body>
+        </Modal>
+      )}
+      {/* map show in carosel */}
+      {window.matchMedia("(max-width: 768px").matches ? (
+        <Offcanvas show={offcanvas} onHide={handleOffcanvas} placement="bottom">
+          <Offcanvas.Header className="d-block p-4">
+            <div className="d-flex align-items-start mb-3">
+              <span className="h4">نقشه ایران</span>
+              <FontAwesomeIcon
+                icon={faTimes}
+                size="xl"
+                className="ms-auto"
+                style={{ cursor: "pointer" }}
+                onClick={handleOffcanvas}
+              />
+            </div>
+            {/* <iframe
+              src="/map"
+              title="Iran Map"
+              width="100%"
+              height="290%"
+              scrolling="no"
+            ></iframe> */}
+            <Map/>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <ListGroup>
+              <SearchedCityPage city={city} />
+            </ListGroup>
+          </Offcanvas.Body>
+        </Offcanvas>
+      ) : (
+        <Modal
+          show={offcanvas}
+          onHide={handleOffcanvas}
+          fullscreen="md-down"
+          centered
+          scrollable
+        >
+          <Modal.Header className="d-block">
+            <div className="d-flex mb-3">
+              <span className="h4">جست و جوی شهر یا کشور</span>
+              <FontAwesomeIcon
+                icon={faTimes}
+                size="xl"
+                style={{ cursor: "pointer", marginRight: "10rem" }}
+                onClick={handleOffcanvas}
               />
             </div>
             <FloatingLabel label="جست و جوی شهر">
