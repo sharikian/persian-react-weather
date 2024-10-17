@@ -1,6 +1,6 @@
 {
-  "short_name": "WeatherFor",
-  "name": "Weather Forecast Web Application",
+  "short_name": "weather",
+  "name": "shuriken web base weather app",
   "icons": [
     {
       "src": "favicon.ico",
