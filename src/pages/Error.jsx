@@ -55,7 +55,7 @@ const ErrorPage = () => {
         }}
       >
         <img
-          src={require("../static/sad-cloud.png")}
+          src={require("../static/svg/sad-cloud.png")}
           alt="Error Page Icon"
           loading="lazy"
         />
@@ -82,7 +82,7 @@ const ErrorPage = () => {
           >
             <span className="me-2 mx-2">نمایش آب و هوا</span>
             <img
-              src={require("../static/partly-cloudy-day--v1-small.png")}
+              src={require("../static/svg/partly-cloudy-day--v1-small.png")}
               alt="Button Icon"
             />
           </Button>

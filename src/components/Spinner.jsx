@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import logo from "../logo.svg";
+import logo from "../static/svg/logo.svg";
 
 const Spinner = () => {
   const animationState = useSelector((state) => state.animation);

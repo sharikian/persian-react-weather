@@ -2,3 +2,4 @@ node_modules
 package-lock.json
 .react-weather-app-vite
 src/main.scss
+build/

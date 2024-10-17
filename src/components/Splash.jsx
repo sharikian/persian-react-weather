@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import logo from "../logo.svg";
+import logo from "../static/svg/logo.svg";
 import { Button, Card, Toast, ToastContainer } from "react-bootstrap";
 import { useEffect, useState } from "react";
 

@@ -3,9 +3,9 @@ const getWeatherData = (weathercode) => {
     case 0:
       return {
         icon: {
-          day: require("../static/sun--v1.png"),
+          day: require("../static/svg/sun--v1.png"),
           night:
-            require("../static/bright-moon--v1.png"),
+            require("../static/svg/bright-moon--v1.png"),
         },
         forecast: "هوای صاف",
         forecast_short: "روشن",
@@ -14,9 +14,9 @@ const getWeatherData = (weathercode) => {
     case 1:
       return {
         icon: {
-          day: require("../static/sun--v1.png"),
+          day: require("../static/svg/sun--v1.png"),
           night:
-            require("../static/bright-moon--v1.png"),
+            require("../static/svg/bright-moon--v1.png"),
         },
         forecast: "تقریبا صاف",
         forecast_short: "روشن",
@@ -25,9 +25,9 @@ const getWeatherData = (weathercode) => {
     case 2:
       return {
         icon: {
-          day: require("../static/partly-cloudy-day--v1.png"),
+          day: require("../static/svg/partly-cloudy-day--v1.png"),
           night:
-            require("../static/partly-cloudy-night.png"),
+            require("../static/svg/partly-cloudy-night.png"),
         },
         forecast: "هوا نیمه ابری",
         forecast_short: "نیمه ابری",
@@ -36,8 +36,8 @@ const getWeatherData = (weathercode) => {
     case 3:
       return {
         icon: {
-          day: require("../static/clouds--v1.png"),
-          night: require("../static/clouds--v1.png"),
+          day: require("../static/svg/clouds--v1.png"),
+          night: require("../static/svg/clouds--v1.png"),
         },
         forecast: "هوا ابری",
         forecast_short: "ابری",
@@ -47,9 +47,9 @@ const getWeatherData = (weathercode) => {
     case 48:
       return {
         icon: {
-          day: require("../static/foggy-night-1.png"),
+          day: require("../static/svg/foggy-night-1.png"),
           night:
-            require("../static/foggy-night-1.png"),
+            require("../static/svg/foggy-night-1.png"),
         },
         forecast: "هوا مه آلود",
         forecast_short: "مه",
@@ -62,8 +62,8 @@ const getWeatherData = (weathercode) => {
     case 57:
       return {
         icon: {
-          day: require("../static/wet.png"),
-          night: require("../static/wet.png"),
+          day: require("../static/svg/wet.png"),
+          night: require("../static/svg/wet.png"),
         },
         forecast: "هوا کمی بارانی",
         forecast_short: "نم نم باران",
@@ -74,8 +74,8 @@ const getWeatherData = (weathercode) => {
     case 65:
       return {
         icon: {
-          day: require("../static/light-rain.png"),
-          night: require("../static/light-rain.png"),
+          day: require("../static/svg/light-rain.png"),
+          night: require("../static/svg/light-rain.png"),
         },
         forecast: "هوا بارانی خفیف",
         forecast_short: "بارانی خفیف",
@@ -85,8 +85,8 @@ const getWeatherData = (weathercode) => {
     case 67:
       return {
         icon: {
-          day: require("../static/downpour.png"),
-          night: require("../static/downpour.png"),
+          day: require("../static/svg/downpour.png"),
+          night: require("../static/svg/downpour.png"),
         },
         forecast: "هوا بارانی",
         forecast_short: "بارانی",
@@ -97,8 +97,8 @@ const getWeatherData = (weathercode) => {
     case 75:
       return {
         icon: {
-          day: require("../static/snowflake.png"),
-          night: require("../static/snowflake.png"),
+          day: require("../static/svg/snowflake.png"),
+          night: require("../static/svg/snowflake.png"),
         },
         forecast: "هوا برفی خفیف",
         forecast_short: "برفی خفیف",
@@ -107,9 +107,9 @@ const getWeatherData = (weathercode) => {
     case 77:
       return {
         icon: {
-          day: require("../static/snowy-sunny-day.png"),
+          day: require("../static/svg/snowy-sunny-day.png"),
           night:
-            require("../static/light-snow--v1.png"),
+            require("../static/svg/light-snow--v1.png"),
         },
         forecast: "هوا برفی",
         forecast_short: "برفی",
@@ -120,8 +120,8 @@ const getWeatherData = (weathercode) => {
     case 82:
       return {
         icon: {
-          day: require("../static/heavy-rain.png"),
-          night: require("../static/heavy-rain.png"),
+          day: require("../static/svg/heavy-rain.png"),
+          night: require("../static/svg/heavy-rain.png"),
         },
         forecast: "باران شدید",
         forecast_short: "شدید",
@@ -131,8 +131,8 @@ const getWeatherData = (weathercode) => {
     case 86:
       return {
         icon: {
-          day: require("../static/snow-storm.png"),
-          night: require("../static/snow-storm.png"),
+          day: require("../static/svg/snow-storm.png"),
+          night: require("../static/svg/snow-storm.png"),
         },
         forecast: "بارش برف طوفانی",
         forecast_short: "برف",
@@ -143,9 +143,9 @@ const getWeatherData = (weathercode) => {
     case 99:
       return {
         icon: {
-          day: require("../static/chance-of-storm.png"),
+          day: require("../static/svg/chance-of-storm.png"),
           night:
-            require("../static/chance-of-storm.png"),
+            require("../static/svg/chance-of-storm.png"),
         },
         forecast: "رعد و برق و باران",
         forecast_short: "طوفانی",
