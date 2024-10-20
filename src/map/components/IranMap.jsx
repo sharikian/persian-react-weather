@@ -10,11 +10,11 @@ const useMouse = () => {
   useEffect(() => {
     function handle(e) {
       setMousePosition({
-        x: e.pageX,
+        x: e.pageX ,
         y: e.pageY
       });
     }
-    const mapEffect = document.querySelector("svg");
+    const mapEffect = document.querySelector("svg#IranMap");
     mapEffect.addEventListener("mousemove", handle);
     return () => document.removeEventListener("mousemove", handle);
   }, [setMousePosition]);
@@ -33,19 +33,20 @@ const IranMap = () => {
   const cityRef = useRef();
 
   const handleSubmit = (e) => {
-    console.log(document.querySelector("#cityBox").value);
     e.preventDefault();
-    window.location = 'http://127.0.0.1:3000/search/country=IR&cityname=' + getCurrentCity(
-      cityRef.current.value
-    )}
+    let location = getCurrentCity(
+      document.querySelector("#cityBox:checked").value
+    )
+    window.location = `/search/country=IR&cityname=${location}`
+  }
   
 
   return (
     <>
-      <span className={styles.show_title}>
+      <span className={styles.show_title} id="shower">
         {provinceName}
         <style jsx>{`
-          span {
+          span#shower {
             left: ${x + 5 + "px"};
             top: ${y + 5 + "px"};
             z-index: 999;
@@ -64,11 +65,22 @@ const IranMap = () => {
               <span>{provinceNameOnClick}</span>
             </p>
             <form>
-              {cities.map((city) => {
+              {cities.map((city, index) => {
                 return (
                   <>
-                    <input id="cityBox" type="radio" value={city} name='city' ref={cityRef} />
-                    <label htmlFor={city} className={styles.city_label}>
+                    <input
+                      id="cityBox"
+                      type="radio"
+                      value={city}
+                      name="city"
+                      ref={cityRef}
+                      // checked={index === 0}
+                    />
+                    <label
+                      style={{ color: "black" }}
+                      htmlFor={city}
+                      className={styles.city_label}
+                    >
                       {city}
                     </label>
                     <br />
@@ -82,7 +94,12 @@ const IranMap = () => {
                 >
                   بازگشت
                 </button>
-                <input type="submit" value="تایید" onClick={handleSubmit} />
+                <input
+                  type="submit"
+                  value="تایید"
+                  onClick={handleSubmit}
+                  // disabled={cityRef.current.value}
+                />
               </div>
             </form>
           </div>
@@ -105,6 +122,7 @@ const IranMap = () => {
             className={
               mapZoom ? styles.svg + " " + styles.map_zoom : styles.svg
             }
+            id="IranMap"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"

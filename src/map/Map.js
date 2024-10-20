@@ -1,10 +1,13 @@
 import IranMap from "./components/IranMap";
-import './Map.css'
+import "./Map.css";
 
-function Map() {
+function Map({style}) {
   return (
     <>
-      <div className="hero" style={{marginTop: '-5rem'}}>
+      <div
+        className="hero"
+        style={{ marginTop: "-4rem", height: "50vw", ...style }}
+      >
         <IranMap />
       </div>
       <style jsx>{`

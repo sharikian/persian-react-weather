@@ -5,7 +5,18 @@ const Brand = ({ onClick }) => {
   return (
     <Link
       to="/"
-      className="d-flex navbar-brand align-items-center align-self-start text-center"
+      className="d-flex navbar-brand align-items-center align-self-center text-center"
+      style={{
+        position: "sticky",
+        top: "10px",
+        zIndex: 2,
+        backgroundColor: "darkslategrey",
+        width: "inherit",
+        justifyContent: "center",
+        borderRadius: "1rem",
+        boxShadow: "0rem 0.3rem #2f2f44",
+        padding: "0.5rem"
+      }}
       onClick={onClick}
     >
       <img src={logo} width={32} alt="App logo" />

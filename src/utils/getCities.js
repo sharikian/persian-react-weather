@@ -472,5 +472,5 @@ export const getCurrentCity = (en) => {
       return Cities[key];
     }
   }
-  return null;
+  return en;
 };

@@ -16,7 +16,7 @@ const SearchedCityPage = ({ city }) => {
     setError(false);
     try {
       const response = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${getCurrentCity(city.toLowerCase())}`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${getCurrentCity(city.toLowerCase())}&country=IR`
       );
 
       if (!response.ok) throw new Error("اطلاعات پیدا نشد !");
@@ -40,6 +40,7 @@ const SearchedCityPage = ({ city }) => {
     }
     setIsLoading(false);
     setError(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city]);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const SearchedCityPage = ({ city }) => {
         !error &&
         searchedCity &&
         searchedCity.results !== undefined &&
-        [searchedCity.results[0]].map((result, index) => (
+        searchedCity.results.map((result, index) => (
           <Link
             to={`/search/country=${result.country_code}&cityname=${result.name}&latitude=${result.latitude}&longitude=${result.longitude}`}
             className="mb-2"

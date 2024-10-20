@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
-  faBars,
+  faMapSigns,
   faLocationDot,
   faSearch,
   faTimes,
@@ -52,8 +52,8 @@ const Header = ({ searched }) => {
                 </Link>
               ) : (
                 <FontAwesomeIcon
-                  className="d-md-none"
-                  icon={faBars}
+                  // className="d-md-none"
+                  icon={faMapSigns}
                   size="xl"
                   style={{ cursor: "pointer" }}
                   onClick={handleOffcanvas}
@@ -84,14 +84,14 @@ const Header = ({ searched }) => {
       {window.matchMedia("(max-width: 768px").matches ? (
         <Offcanvas show={modal} onHide={handleModal} placement="bottom">
           <Offcanvas.Header className="d-block p-4">
-            <div className="d-flex align-items-start mb-3">
+            <div className="d-flex mb-3" style={{justifyContent: 'space-between'}}>
               <span className="h4">جست و جوی شهر</span>
               <FontAwesomeIcon
                 icon={faTimes}
                 size="xl"
-                className="ms-auto"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer"}}
                 onClick={handleModal}
+                
               />
             </div>
             <FloatingLabel label="جست و جوی شهر">
@@ -148,16 +148,15 @@ const Header = ({ searched }) => {
         </Modal>
       )}
       {/* map show in carosel */}
-      {window.matchMedia("(max-width: 768px").matches ? (
+      {window.matchMedia("(max-width: 2768px").matches ? ( // change 768 to 2768
         <Offcanvas show={offcanvas} onHide={handleOffcanvas} placement="bottom">
           <Offcanvas.Header className="d-block p-4">
-            <div className="d-flex align-items-start mb-3">
+            <div className="d-flex align-items-end mb-3" style={{justifyContent: 'space-between'}}>
               <span className="h4">نقشه ایران</span>
               <FontAwesomeIcon
                 icon={faTimes}
                 size="xl"
-                className="ms-auto"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", zIndex: 9999}}
                 onClick={handleOffcanvas}
               />
             </div>
@@ -168,7 +167,7 @@ const Header = ({ searched }) => {
               height="290%"
               scrolling="no"
             ></iframe> */}
-            <Map/>
+            <Map />
           </Offcanvas.Header>
           <Offcanvas.Body>
             <ListGroup>
@@ -185,25 +184,16 @@ const Header = ({ searched }) => {
           scrollable
         >
           <Modal.Header className="d-block">
-            <div className="d-flex mb-3">
+            <div className="d-flex mb-3" style={{justifyContent: 'space-between'}}>
               <span className="h4">جست و جوی شهر یا کشور</span>
               <FontAwesomeIcon
                 icon={faTimes}
                 size="xl"
-                style={{ cursor: "pointer", marginRight: "10rem" }}
+                style={{ cursor: "pointer", zIndex: 9999 }}
                 onClick={handleOffcanvas}
               />
             </div>
-            <FloatingLabel label="جست و جوی شهر">
-              <Form.Control
-                type="text"
-                name="city"
-                placeholder="مشهد, ایتالیا و..."
-                value={city}
-                onChange={handleCityOnChange}
-                autoComplete="off"
-              />
-            </FloatingLabel>
+            <Map/>
           </Modal.Header>
           <Modal.Body style={city === "" ? undefined : { height: "300px" }}>
             <ListGroup>
