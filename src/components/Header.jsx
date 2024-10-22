@@ -169,11 +169,6 @@ const Header = ({ searched }) => {
             ></iframe> */}
             <Map />
           </Offcanvas.Header>
-          <Offcanvas.Body>
-            <ListGroup>
-              <SearchedCityPage city={city} />
-            </ListGroup>
-          </Offcanvas.Body>
         </Offcanvas>
       ) : (
         <Modal

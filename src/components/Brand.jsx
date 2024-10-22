@@ -20,7 +20,7 @@ const Brand = ({ onClick }) => {
       onClick={onClick}
     >
       <img src={logo} width={32} alt="App logo" />
-      <h1 className="fs-2 mx-2">آب و هوا</h1>
+      <h1 className="fs-2 mx-2" style={{color: 'wheat'}}>آب و هوا</h1>
     </Link>
   );
 };

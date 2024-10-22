@@ -35,9 +35,9 @@ const DailyWeatherDetailPage = () => {
   };
 
   const dailyWeather = { temperature, weathercode, windspeed };
-
+  const today = new Date(times[dayIndex]);
   const date = getDate(
-    new Date(times[dayIndex]),
+    today,
     {
       weekday: "long",
       day: "numeric"
@@ -47,7 +47,7 @@ const DailyWeatherDetailPage = () => {
   const index = hourlyTimes.findIndex(
     (hourlyTime) =>
       Number(hourlyTime.split("T").at(0).split("-").at(2)) ===
-      Number(date.split(" ").at(0))
+      today.getDate() //Number(date.split(" ").at(0))
   );
 
   const slicedHours = hourlyTimes.slice(index, index + 24);

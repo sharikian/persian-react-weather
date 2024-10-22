@@ -6,7 +6,7 @@ function Map({style}) {
     <>
       <div
         className="hero"
-        style={{ marginTop: "-4rem", height: "50vw", ...style }}
+        style={{ marginTop: "-4rem", ...style }}
       >
         <IranMap />
       </div>

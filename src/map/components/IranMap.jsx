@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import iranProvinces from "../data/iranProvinces";
 import iranBorder, { caspianD, persianGulfD } from "../data/IranMapData";
 import styles from "./IranMap.module.css";
@@ -30,14 +31,15 @@ const IranMap = () => {
   const [mapZoom, setMapZoom] = useState(false);
   const [provinceSelected, setProvinceSelected] = useState(false);
   const [cities, setCities] = useState(["تمام ایران"]);
-  const cityRef = useRef();
+  const cityRef = useRef(); //TODO: done this refrence
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let location = getCurrentCity(
       document.querySelector("#cityBox:checked").value
     )
-    window.location = `/search/country=IR&cityname=${location}`
+    navigate(`/search/country=IR&cityname=${location}`)
   }
   
 
